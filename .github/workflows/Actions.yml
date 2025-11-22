@@ -1,4 +1,4 @@
-#Place Holder Code
+# Initial Actions Test File
 
 name: Code Qualipy Check
 on: pull_request
@@ -14,17 +14,12 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9' # Supporting older codebases or packages compared to 3.14.0
+          python-version: '3.8' # 3.8 supports Radon compared to 3.14.0
 
       - name: install python packages
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: execute py script # run main.py
-        env:
-          SOME_SECRET: ${{ secrets.SOME_SECRET }}
-        run: python Complexity.py main.py
-
-# need to create a requirements .txt file?
-# https://www.youtube.com/watch?v=PaGp7Vi5gfM 9:45
+      - name: execute py script
+        run: python Qualipy/Complexity.py main.py
